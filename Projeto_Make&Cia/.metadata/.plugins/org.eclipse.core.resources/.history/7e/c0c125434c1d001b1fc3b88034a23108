@@ -1,0 +1,49 @@
+package br.com.libertas.controller;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.google.gson.Gson;
+
+import br.com.libertas.model.Modelo;
+
+/**
+ * Servlet implementation class CadastroProduto
+ */
+@WebServlet("/CadastroProduto")
+
+public class Controller extends HttpServlet {
+	
+	private static final long serialVersionUID = 1L;
+
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void executar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		response.setContentType("text/html;charset=UTF-8");
+		
+		String parametro = request.getParameter("modelo");
+		String nomeClasse = "model." + parametro;
+		
+		try {
+			
+			Class classe = Class.forName(nomeClasse);
+			Modelo modelo = (Modelo) classe.newInstance();
+			modelo.executa(request, response);
+			
+		} 
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+}

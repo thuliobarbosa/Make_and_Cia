@@ -1,0 +1,4 @@
+package br.com.libertas.model;
+
+public class ListarProdutos {
+}

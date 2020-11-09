@@ -1,0 +1,42 @@
+package br.com.libertas.model;
+
+import java.io.PrintWriter;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.google.gson.Gson;
+
+import br.com.libertas.db.ProdutoDao;
+import br.com.libertas.dto.Produto;
+
+public class InserirProduto implements Modelo{
+	
+	public void execute(HttpServletRequest request, HttpServletResponse response) {
+		
+		try {
+		
+			ProdutoDao pDao = new ProdutoDao();
+			Produto p = new Produto();
+			Gson gson = new Gson();
+			
+			p.setCodigo(request.getParameter("codigo"));
+			p.setDescricao(request.getParameter("descricao"));
+			p.setPreco_custo(Double.parseDouble(request.getParameter("preco_custo")));
+			p.setPreco_venda(Double.parseDouble(request.getParameter("preco_venda")));
+			p.setCategoria(Integer.parseInt(request.getParameter("categoria")));;
+			p.setCod_fornecedor(Integer.parseInt(request.getParameter("cod_fornecedor")));
+			p.setQuantidade(Integer.parseInt(request.getParameter("quantidade")));
+			
+			PrintWriter out = response.getWriter();
+			String res = gson.toJson(pDao.inserirProduto(p));
+			out.print(res);
+			
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+}

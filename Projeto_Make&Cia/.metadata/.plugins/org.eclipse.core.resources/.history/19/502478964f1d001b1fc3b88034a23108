@@ -1,0 +1,21 @@
+package br.com.libertas.model;
+
+import java.io.PrintWriter;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.google.gson.Gson;
+
+import br.com.libertas.db.ProdutoDao;
+import br.com.libertas.dto.Produto;
+
+public class InserirProduto implements Modelo{
+	
+	public void execute(HttpServletRequest request, HttpServletResponse response) {
+		
+		
+		
+	}
+
+}

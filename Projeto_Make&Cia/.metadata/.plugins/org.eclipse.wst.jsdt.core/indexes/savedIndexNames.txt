@@ -1,0 +1,7 @@
+INDEX VERSION 1.4+C:\Users\Thulio Barbosa\Documents\GitHub\Make-Cia-beta\Projeto_Make&Cia\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+3948574417.index
+3345283679.index
+1635958549.index
+1711045032.index
+2668849550.index
+1969859065.index

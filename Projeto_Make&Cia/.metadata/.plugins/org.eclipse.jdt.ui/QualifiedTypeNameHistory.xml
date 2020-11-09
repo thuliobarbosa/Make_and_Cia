@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="com.google.gson.Gson"/>
+    <fullyQualifiedTypeName name="br.com.libertas.db.ProdutoDao"/>
+    <fullyQualifiedTypeName name="java.io.PrintWriter"/>
+    <fullyQualifiedTypeName name="br.com.libertas.db.UsuarioDao"/>
+    <fullyQualifiedTypeName name="br.com.libertas.db.Usuario"/>
+    <fullyQualifiedTypeName name="br.com.libertas.dto.Produto"/>
+    <fullyQualifiedTypeName name="java.lang.System"/>
+    <fullyQualifiedTypeName name="br.com.libertas.model.ConsultarProduto"/>
+</qualifiedTypeNameHistroy>
