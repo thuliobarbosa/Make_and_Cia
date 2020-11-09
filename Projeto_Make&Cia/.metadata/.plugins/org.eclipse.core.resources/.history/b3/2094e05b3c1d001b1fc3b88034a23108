@@ -1,5 +1,0 @@
-package br.com.libertas.model;
-
-public interface Modelo {
-
-}

@@ -4,9 +4,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.LinkedList;
-
 import br.com.libertas.dto.Produto;
-import br.com.libertas.model.ConsultarProduto;
+
 
 
 public class ProdutoDao {
@@ -68,6 +67,7 @@ public class ProdutoDao {
 		} 
 		catch (Exception e) {
 			e.printStackTrace();
+			saida = "Não foi possivel excluir o produto, motivo : " + e.toString();
 		}
 
 		return saida;

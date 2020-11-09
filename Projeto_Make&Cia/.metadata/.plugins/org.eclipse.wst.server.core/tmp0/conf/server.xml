@@ -124,7 +124,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="C:\Users\Thulio Barbosa\Documents\GitHub\Make-Cia-beta\Projeto_Make&amp;Cia\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ROOT" path="" reloadable="false"/><Context docBase="C:\Users\Thulio Barbosa\Documents\GitHub\Make-Cia-beta\Projeto_Make&amp;Cia\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\MakeAndCia" path="/MakeAndCia" reloadable="true" source="org.eclipse.jst.jee.server:MakeAndCia"/></Host>
+      <Context docBase="C:\Users\Thulio Barbosa\Documents\GitHub\Make_and_Cia\Projeto_Make&amp;Cia\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ROOT" path="" reloadable="false"/><Context docBase="C:\Users\Thulio Barbosa\Documents\GitHub\Make_and_Cia\Projeto_Make&amp;Cia\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\MakeAndCia" path="/MakeAndCia" reloadable="true" source="org.eclipse.jst.jee.server:MakeAndCia"/></Host>
     </Engine>
   </Service>
 </Server>

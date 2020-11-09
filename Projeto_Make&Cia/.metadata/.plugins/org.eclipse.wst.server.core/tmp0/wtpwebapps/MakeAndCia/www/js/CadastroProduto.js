@@ -23,7 +23,7 @@ class CadastroProduto {
 		
 		btnCadProduto.addEventListener('click', () => {
 			
-			btnCadProduto.disabled = false;
+			//btnCadProduto.disabled = false;
 			
 			requestAjax("InserirProduto", this.formularioCad).then(
 				
@@ -31,7 +31,7 @@ class CadastroProduto {
 					
 		        	alert(retorno);
 					this.formularioCad.reset();
-					btnCadProduto.disabled = true;
+					//btnCadProduto.disabled = true;
 					this.atualizaContador();
 					
 					requestAjax("ListarProduto", this.formularioCad).then(
@@ -81,7 +81,7 @@ class CadastroProduto {
 			            </td> 
 						
 		        	`;
-					
+
 					tr.id = campo.id
 
 					tr.querySelector(".btn-edit").addEventListener('click', (event) => {
@@ -120,6 +120,9 @@ class CadastroProduto {
 	            	<button type="button" class="btn btn-danger btn-xs btn-flat" onclick="excluiCadastro(${dados.id})">Excluir</button>
 		            </td> 
 		`;
+		
+		
+		tr.id = dados.id;
 		
 		tr.querySelector(".btn-edit").addEventListener('click', (event) => {
 			this.mostraFormularioEdit();
@@ -196,9 +199,42 @@ function editaCadastro(idUsuario) {
 				let opSim = modal.querySelector("#btnModalSim");
 				opSim.addEventListener('click', () => {
 					
+					var tabela = document.querySelector("#tabela-produtos");
+					
 					requestAjax("AlterarProduto", formEdit).then(
 			
 					(retorno) => {
+						
+						//adasdsadasd
+						var linha = "";
+						[...tabela.children].forEach( (tr) => {
+							if (tr.id == idUsuario) {
+								linha = tr;
+								
+								requestAjax("ConsultarProduto", formEdit).then(
+			
+									(retorno) => {
+									
+										[...linha.cells][0].innerHTML = retorno.codigo;
+										[...linha.cells][1].innerHTML = retorno.descricao;
+										[...linha.cells][2].innerHTML = retorno.preco_custo;
+										[...linha.cells][3].innerHTML = retorno.preco_venda;
+										[...linha.cells][4].innerHTML = retorno.categoria;
+										[...linha.cells][5].innerHTML = retorno.cod_fornecedor;
+										[...linha.cells][6].innerHTML = retorno.quantidade;
+								
+								   	}, 
+								
+									(error) => {
+										console.log(error)
+									}
+			
+								);
+								
+							}
+						});
+						
+						
 						formEdit.reset();
 			   		}, 
 			
@@ -235,27 +271,24 @@ function excluiCadastro(idUsuario) {
 
 	id.value = idUsuario;
 	
-	var tabela = document.querySelector("#tabela-produtos");
-	var linha = "";
-	[...tabela.children].forEach( (tr) => {
-		if (tr.id == idUsuario) {
-			linha = tr;
-		}
-	});
-	
-	linha.remove()
-	
 	let modal = document.querySelector("#modalConfirm");
 	modal.style.display = "block";
 	modal.querySelector("#pModal").innerHTML = "Deseja excluir o produto?";
 	
 	let opSim = modal.querySelector("#btnModalSim");
 	opSim.addEventListener('click', () => {
-		
-		requestAjax("ExcluiProduto", "#form-cadastro-produto").then(
+	
+		requestAjax("ExcluiProduto", formCad).then(
 			
 		(retorno) => {
-			console.log("===" + retorno)
+			var tabela = document.querySelector("#tabela-produtos");
+			var linha = "";
+			[...tabela.children].forEach( (tr) => {
+				if (tr.id == idUsuario) {
+					linha = tr;
+					linha.remove();
+				}
+			});
 	   	}, 
 	
 		(error) => {
