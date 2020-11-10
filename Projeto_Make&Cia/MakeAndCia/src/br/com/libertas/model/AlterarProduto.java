@@ -38,14 +38,14 @@ public class AlterarProduto extends HttpServlet implements Modelo {
 			Produto p = new Produto();
 			Gson gson = new Gson();
 			
-			p.setCodigo(request.getParameter("EdCodigo"));
-			p.setDescricao(request.getParameter("EdDescricao"));
-			p.setPreco_custo(Double.parseDouble(request.getParameter("EdPreco-custo")));
-			p.setPreco_venda(Double.parseDouble(request.getParameter("EdPreco-venda")));
-			p.setCategoria(Integer.parseInt(request.getParameter("EdCategoria")));
-			p.setCod_fornecedor(Integer.parseInt(request.getParameter("EdFornecedor")));
-			p.setQuantidade(Integer.parseInt(request.getParameter("EdQtd-estoque")));
-			p.setId(Integer.parseInt(request.getParameter("ident")));
+			p.setCodigo(request.getParameter("codigo"));
+			p.setDescricao(request.getParameter("descricao"));
+			p.setPreco_custo(Double.parseDouble(request.getParameter("preco-custo")));
+			p.setPreco_venda(Double.parseDouble(request.getParameter("preco-venda")));
+			p.setCategoria(Integer.parseInt(request.getParameter("categoria")));
+			p.setCod_fornecedor(Integer.parseInt(request.getParameter("fornecedor")));
+			p.setQuantidade(Integer.parseInt(request.getParameter("qtd-estoque")));
+			p.setId(Integer.parseInt(request.getParameter("identCad")));
 			
 			PrintWriter out = response.getWriter();
 			String res = gson.toJson(pDao.alterar(p));

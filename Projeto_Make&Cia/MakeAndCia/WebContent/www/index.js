@@ -35,4 +35,5 @@ function mostraPainelProduto() {
     document.querySelector("#show_vendas").style.display = "none";
     document.querySelector("#show_cadastro-produto").style.display = "block";
     document.querySelector("#show_cadastro-usuario").style.display = "none";
+    cadastroProduto.listaProdutos();
 }

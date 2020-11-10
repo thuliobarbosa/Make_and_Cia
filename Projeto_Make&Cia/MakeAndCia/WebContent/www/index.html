@@ -335,7 +335,7 @@
 						<div class="box box-success" id="box-cadastro-produto">
 
 							<div class="box-header with-border">
-								<h3 class="box-title">Novo Produto</h3>
+								<h3 class="box-title" id="box-cadastro-produto-titulo">Novo Produto</h3>
 							</div>
 
 							<form role="form" id="form-cadastro-produto">
@@ -380,63 +380,9 @@
 
 								<div class="box-footer">
 									<button type="submit" class="btn btn-success"
-										id="btnCadastraProduto">Cadastrar</button>
-								</div>
-							</form>
-						</div>
-
-						<!-- Formulário de edição de produto -->
-						<div class="box box-primary" id="box-edit-produto" style="display: none;">
-
-							<div class="box-header with-border">
-								<h3 class="box-title">Altera Produto</h3>
-							</div>
-
-							<form role="form" id="form-edit-produto">
-								<div class="box-body">
-									<div class="form-group">
-										<input type="hidden" class="form-control" id="ident" name="ident">
-									</div>
-									<div class="form-group">
-										<label for="EdCodigo">Codigo</label> <input type="text" class="form-control"
-											id="EdCodigo" placeholder="Descrição do Produto" name="EdCodigo" required>
-									</div>
-									<div class="form-group">
-										<label for="EdDescricao">Descrição</label> <input type="text"
-											class="form-control" id="EdDescricao" placeholder="Descrição do Produto"
-											name="EdDescricao" required>
-									</div>
-									<div class="form-group">
-										<label for="EdPreco-custo">Preco de custo</label> <input type="number"
-											class="form-control" id="EdPreco-custo" placeholder="Preço de custo"
-											name="EdPreco-custo" required>
-									</div>
-									<div class="form-group">
-										<label for="EdPreco-venda">Preco de venda</label> <input type="number"
-											class="form-control" id="EdPreco-venda" placeholder="Preço de venda"
-											name="EdPreco-venda" required>
-									</div>
-									<div class="form-group">
-										<label for="EdCategoria">Categoria</label> <input type="number"
-											class="form-control" id="EdCategoria" placeholder="Categoria do produto"
-											name="EdCategoria" required>
-									</div>
-									<div class="form-group">
-										<label for="EdFornecedor">Fornecedor</label> <input type="number"
-											class="form-control" id="EdFornecedor" placeholder="Fornecedor do produto"
-											name="EdFornecedor" required>
-									</div>
-									<div class="form-group">
-										<label for="EdQtd-estoque">Estoque</label> <input type="number"
-											class="form-control" id="EdQtd-estoque" placeholder="Quantidade de estoque"
-											name="EdQtd-estoque" required>
-									</div>
-								</div>
-
-								<div class="box-footer">
-									<button type="button" class="btn btn-primary" id="btnEditProduto">Alterar</button>
+										id="btnCadastraProduto">Salvar</button>
 									<button type="button" class="btn btn-default btn-cancel"
-										id="btnEditCancelar">Cancelar</button>
+										id="btnCancelarProduto">Cancelar</button>
 								</div>
 							</form>
 						</div>
@@ -456,10 +402,8 @@
 					<div class="modal-body">
 						<p id="pModal"></p>
 					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-primary" id="btnModalSim">Sim</button>
-						<button type="button" class="btn btn-secondary" data-dismiss="modal"
-							id="btnModalNao">Não</button>
+					<div class="modal-footer" id="modalBotoes">
+						
 					</div>
 				</div>
 			</div>

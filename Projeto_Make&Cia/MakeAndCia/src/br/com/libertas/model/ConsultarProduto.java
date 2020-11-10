@@ -28,7 +28,7 @@ public class ConsultarProduto extends HttpServlet implements Modelo {
     	
 		try {
 			
-			int id = Integer.parseInt(request.getParameter("ident"));
+			int id = Integer.parseInt(request.getParameter("identCad"));
 			
     		ProdutoDao pdao = new ProdutoDao();
         	PrintWriter pw = response.getWriter();

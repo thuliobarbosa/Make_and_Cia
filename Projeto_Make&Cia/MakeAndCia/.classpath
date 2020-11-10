@@ -6,9 +6,10 @@
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/gson-2.8.6.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/mariadb-java-client-2.6.2.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/mysql-connector-java-5.1.49.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Thulio Barbosa/Documents/GitHub/Make_and_Cia/Projeto_Make&amp;Cia/tomcat/lib/servlet-api.jar"/>
+	<classpathentry kind="lib" path="C:/Users/elyfp/OneDrive/Documentos/eclipse-aulas/Make_and_Cia/Projeto_Make&amp;Cia/tomcat/lib/servlet-api.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-11">
 		<attributes>
+			<attribute name="module" value="true"/>
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
