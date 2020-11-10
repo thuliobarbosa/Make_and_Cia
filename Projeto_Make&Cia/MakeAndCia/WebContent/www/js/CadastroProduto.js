@@ -1,19 +1,12 @@
 class CadastroProduto {
 
-	
-	
-	
 	constructor(formularioCadastro, tabelaDeProdutos) {
+		
 		this.formularioCad = document.getElementById(formularioCadastro);
         this.tabelaProdutos = document.getElementById(tabelaDeProdutos);
-
-		
 		this.formCadProduto();
 		this.atualizaContador();
 
-		
-		
-		
 	}
 
 	// Realiza o cadastro de um produto ao bd
@@ -27,10 +20,9 @@ class CadastroProduto {
 		
 		btnCadProduto.addEventListener('click', () => {
 			
-			//btnCadProduto.disabled = false;
 			var servico = "";
-			let formEdit = document.querySelector("#form-cadastro-produto");
-			let id = formEdit.querySelector("#identCad");
+			let id = this.formularioCad.querySelector("#identCad");
+			
 			if (id.value==0) {
 				servico = "InserirProduto";
 			} else {
@@ -44,10 +36,8 @@ class CadastroProduto {
 					
 		        	alert(retorno);
 					this.formularioCad.reset();
-					//btnCadProduto.disabled = true;
 					this.atualizaContador();
 					this.listaProdutos();
-					
 					this.mostraFormularioCad();
 					
 	        	},
@@ -58,26 +48,25 @@ class CadastroProduto {
 			);
 		});
 		
-
-
-
-		let formEdit = document.querySelector("#form-cadastro-produto");
-		formEdit.querySelector("#btnCancelarProduto").addEventListener('click', () => {
+		/*this.formularioCad.querySelector("#btnCancelarProduto").addEventListener('click', () => {
 			///xxxxxxx
-		});
+		});*/
 	
 	}
 
 	// Lista produtos já cadastrado na tabela de produto
 	listaProdutos() {
-		this.tabelaProdutos.innerHTML = "Aguarde... Carregando...";
+		
+		this.tabelaProdutos.innerHTML = "<h4>Sincronizando os dados...</h4>";
+		
 		requestAjax("ListarProduto", this.formularioCad).then(
 			
 			(retorno) => {
+				
 				this.tabelaProdutos.innerHTML = "";
+				
 				retorno.forEach((campo) => {
 				
-					
 					let tr = document.createElement('tr');
 				
 					tr.innerHTML += `
@@ -134,38 +123,38 @@ class CadastroProduto {
 
 	mostraFormularioCad() {
         document.querySelector("#box-cadastro-produto-titulo").innerHTML = "Cadastrar Produto";
-        let formEdit = document.querySelector("#form-cadastro-produto");
-		let id = formEdit.querySelector("#identCad");
+
+		let id = this.formularioCad.querySelector("#identCad");
 		id.value = 0;
     }
 
     mostraFormularioEdit() {
         document.querySelector("#box-cadastro-produto-titulo").innerHTML = "Alterar Produto";
     }	
+
 }
 
 // Adiciona os dados no formulario de edição e altera os valores
 function editaCadastro(idProduto) {
+	
 	cadastroProduto.mostraFormularioEdit();
 	
-	
-	let formEdit = document.querySelector("#form-cadastro-produto");
-	let id = formEdit.querySelector("#identCad");
+	let formCadastro = document.querySelector("#form-cadastro-produto");
+	let id = formCadastro.querySelector("#identCad");
 	id.value = idProduto;
 	
-	requestAjax("ConsultarProduto", formEdit).then(
+	requestAjax("ConsultarProduto", formCadastro).then(
 			
 		(retorno) => {
 			
-			formEdit.querySelector("#codigo").value = retorno.codigo
-			formEdit.querySelector("#descricao").value = retorno.descricao
-			formEdit.querySelector("#preco-custo").value = retorno.preco_custo
-			formEdit.querySelector("#preco-venda").value = retorno.preco_venda
-			formEdit.querySelector("#categoria").value = retorno.categoria
-			formEdit.querySelector("#fornecedor").value = retorno.cod_fornecedor
-			formEdit.querySelector("#qtd-estoque").value = retorno.quantidade
-			
-			
+			formCadastro.querySelector("#codigo").value = retorno.codigo
+			formCadastro.querySelector("#descricao").value = retorno.descricao
+			formCadastro.querySelector("#preco-custo").value = retorno.preco_custo
+			formCadastro.querySelector("#preco-venda").value = retorno.preco_venda
+			formCadastro.querySelector("#categoria").value = retorno.categoria
+			formCadastro.querySelector("#fornecedor").value = retorno.cod_fornecedor
+			formCadastro.querySelector("#qtd-estoque").value = retorno.quantidade
+				
 	   	}, 
 	
 		(error) => {
@@ -176,13 +165,13 @@ function editaCadastro(idProduto) {
 
 }
 
-function excluiCadastro(idUsuario) {
+function excluiCadastro(idProduto) {
 		
-	var formCad = document.querySelector("#form-cadastro-produto");
+	var formCadastro = document.querySelector("#form-cadastro-produto");
 	
-	let id = formCad.querySelector("#identCad");
+	let id = formCadastro.querySelector("#identCad");
 
-	id.value = idUsuario;
+	id.value = idProduto;
 	
 	let modal = document.querySelector("#modalConfirm");
 	modal.style.display = "block";
@@ -194,7 +183,7 @@ function excluiCadastro(idUsuario) {
 	let opSim = modal.querySelector("#btnModalSim");
 	opSim.addEventListener('click', () => {
 	
-		requestAjax("ExcluiProduto", formCad).then(
+		requestAjax("ExcluiProduto", formCadastro).then(
 			
 			(retorno) => {
 				cadastroProduto.listaProdutos();
@@ -202,12 +191,10 @@ function excluiCadastro(idUsuario) {
 			}, 
 		
 			(error) => {
-				console.log("=> ERRO");
 				console.log(error);
 			}
 				
 		);
-		
 		
 		modal.style.display = "none";	
 	});

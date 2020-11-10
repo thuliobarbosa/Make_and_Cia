@@ -6,7 +6,8 @@
     <fullyQualifiedTypeName name="br.com.libertas.db.UsuarioDao"/>
     <fullyQualifiedTypeName name="br.com.libertas.db.Usuario"/>
     <fullyQualifiedTypeName name="br.com.libertas.dto.Produto"/>
-    <fullyQualifiedTypeName name="java.lang.System"/>
     <fullyQualifiedTypeName name="br.com.libertas.model.ConsultarProduto"/>
     <fullyQualifiedTypeName name="br.com.libertas.dto.Usuario"/>
+    <fullyQualifiedTypeName name="com.google.gson.JsonObject"/>
+    <fullyQualifiedTypeName name="java.lang.System"/>
 </qualifiedTypeNameHistroy>

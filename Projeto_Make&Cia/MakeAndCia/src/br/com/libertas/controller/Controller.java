@@ -41,7 +41,7 @@ public class Controller extends HttpServlet {
 			
 		} catch (Exception e) {
 			PrintWriter pw = response.getWriter();
-			pw.print("Invalid parameter!");
+			pw.print("Invalid parameter!!!!!!!!!!!!!!!!!!");
 			e.printStackTrace();
 		}
 
