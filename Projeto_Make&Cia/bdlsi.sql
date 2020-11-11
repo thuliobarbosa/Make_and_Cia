@@ -50,7 +50,7 @@ create table cad_usuario(
 create table vendasProduto(
 	id_VendasProdutos int not null auto_increment,
     pedido int not null,
-    produto varchar(30) not null,
+    produto int not null,
     preço double not null,
     PRIMARY KEY(id_VendasProdutos),
     FOREIGN KEY (pedido) REFERENCES vendas (id_vendas)
@@ -60,7 +60,7 @@ create table vendasProduto(
 create table vendas(
 	id_vendas int not null auto_increment,
     data date,
-    tipo int,
+    tipo varchar(20),
     PRIMARY KEY(id_vendas)
 );
 
