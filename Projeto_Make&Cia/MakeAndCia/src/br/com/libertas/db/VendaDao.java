@@ -44,8 +44,8 @@ public class VendaDao {
 		
 		con.desconecta();
 		
-		resposta.addProperty("Condição ", cond);
-		resposta.addProperty("Mensagem " , saida);
+		resposta.addProperty("Condicao", cond);
+		resposta.addProperty("Mensagem" , saida);
 		
 		return resposta;
 	}
@@ -79,8 +79,8 @@ public class VendaDao {
 		
 		con.desconecta();
 		
-		resposta.addProperty("Condição ", cond);
-		resposta.addProperty("Mensagem " , saida);
+		resposta.addProperty("Condicao", cond);
+		resposta.addProperty("Mensagem" , saida);
 		
 		return resposta;
 	}
@@ -116,8 +116,8 @@ public class VendaDao {
 		
 		con.desconecta();
 		
-		resposta.addProperty("Condição ", cond);
-		resposta.addProperty("Mensagem " , saida);
+		resposta.addProperty("Condicao", cond);
+		resposta.addProperty("Mensagem" , saida);
 		
 		return resposta;
 	}

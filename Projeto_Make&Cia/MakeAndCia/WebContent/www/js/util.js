@@ -10,3 +10,15 @@ function requestAjax(model, formulario) {
 	).finally(function() {
 	});
 }
+
+// Verificar se esta logado
+function verificaLogin() {
+	requestAjax("DadosSessao", this.formularioLogin).then(
+				
+			(retorno) => {
+	        	if(!retorno["Condicao"]) {
+					window.location.href = "login.html";
+				}
+        	}
+		);
+}

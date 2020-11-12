@@ -34,7 +34,7 @@ class CadastroProduto {
 				
 				(retorno) => {
 					
-		        	alert(retorno);
+		        	$.notify({ message: retorno  },{ type: 'info', placement: { from: 'top', align: 'center' } });
 					this.formularioCad.reset();
 					this.atualizaContador();
 					this.listaProdutos();

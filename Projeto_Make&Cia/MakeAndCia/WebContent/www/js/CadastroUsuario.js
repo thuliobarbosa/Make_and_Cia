@@ -42,8 +42,7 @@ class CadastroUsuario {
 			requestAjax(servico, this.formularioCad).then(
 				
 				(retorno) => {
-					
-		        	alert(retorno);
+					$.notify({ message: retorno["Mensagem"]  },{ type: 'info', placement: { from: 'bottom', align: 'center' } });
 					this.formularioCad.reset();
 					this.atualizaContadorUser();
 					this.listaUsuarios();

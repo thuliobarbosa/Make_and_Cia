@@ -26,7 +26,7 @@ public class UsuarioDao {
 		
 		try {
 			String sql = "INSERT INTO cad_usuario (nome, login, senha, administrador) VALUES"
-					+ "(?,?,?,?)";
+					+ "(?,?,MD5(?),?)";
 			
 			PreparedStatement prep = con.getConexao().prepareStatement(sql);
 			prep.setString(1, u.getNome());
@@ -44,8 +44,8 @@ public class UsuarioDao {
 		}
 		con.desconecta();
 		
-		resposta.addProperty("Condição: ", cond);
-		resposta.addProperty("Mensagem:" , saida);
+		resposta.addProperty("Condição", cond);
+		resposta.addProperty("Mensagem" , saida);
 		
 		return resposta;
 		
@@ -80,8 +80,8 @@ public class UsuarioDao {
 		}
 		con.desconecta();
 		
-		resposta.addProperty("Condição ", cond);
-		resposta.addProperty("Mensagem ", saida);
+		resposta.addProperty("Condição", cond);
+		resposta.addProperty("Mensagem", saida);
 		
 		return resposta;
 	}
@@ -102,6 +102,9 @@ public class UsuarioDao {
 		try {
 			
 			String sql = "UPDATE cad_usuario SET nome=?, login=?, senha=?, administrador=? WHERE id=?";
+			if(u.getSenha().length() != 32) {
+				sql = "UPDATE cad_usuario SET nome=?, login=?, senha=MD5(?), administrador=? WHERE id=?";
+			}
 			
 			PreparedStatement prep = con.getConexao().prepareStatement(sql);
 			prep.setString(1, u.getNome());
@@ -121,7 +124,7 @@ public class UsuarioDao {
 		
 		con.desconecta();
 		
-		resposta.addProperty("Condição ", cond);
+		resposta.addProperty("Condição", cond);
 		resposta.addProperty("Mensagem" , mensagem);
 		
 		return resposta;
@@ -209,24 +212,15 @@ public class UsuarioDao {
 		Usuario uRetorno = null;
 		Conexao con = new Conexao();
 		try {
-			String sql = "SELECT * FROM cad_usuario WHERE login = '" + u.getLogin() + "'";
+			String sql = "SELECT * FROM cad_usuario WHERE login = '" + u.getLogin() + "' AND senha = MD5('" + u.getSenha() + "')";
 			Statement sta = con.getConexao().createStatement();
 			ResultSet res = sta.executeQuery(sql);
-			
-			System.out.println(res.toString());
 			if(res.next()) {
-				if(res.getString("senha").equals(u.getSenha())) {
-					System.out.println("senhas iguais");
-					uRetorno = new Usuario();
-					uRetorno.setId(Integer.parseInt(res.getString("id")));
-					uRetorno.setNome(res.getString("nome"));
-					uRetorno.setLogin(res.getString("login"));
-					uRetorno.setAdministrador(Boolean.parseBoolean(res.getString("administrador")));
-					
-				}
-				else {
-					System.out.println("senhas diferentes");
-				}
+				uRetorno = new Usuario();
+				uRetorno.setId(Integer.parseInt(res.getString("id")));
+				uRetorno.setNome(res.getString("nome"));
+				uRetorno.setLogin(res.getString("login"));
+				uRetorno.setAdministrador(Boolean.parseBoolean(res.getString("administrador")));
 			}
 			res.close();
 			

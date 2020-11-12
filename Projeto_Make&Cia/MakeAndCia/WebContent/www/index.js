@@ -1,3 +1,5 @@
+verificaLogin();
+
 let cadastroProduto = new CadastroProduto("form-cadastro-produto","tabela-produtos");
 let cadastroUsuario = new CadastroUsuario("form-cadastro-usuario","tabela-usuarios");
 let vendas = new Vendas("tabela-produtos-carrinho", "form-pre-carrinho");
