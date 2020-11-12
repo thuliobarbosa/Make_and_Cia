@@ -139,34 +139,23 @@
 												<th>Descrição</th>
 												<th>Preço</th>
 												<th>Quantidade</th>
-												<th>Ações</th>
+												<th>Ação</th>
 											</tr>
 										</thead>
-										<tbody id="tabela-vendas">
-											<tr>
-												<th>Base para o rosto</th>
-												<th>10.90</th>
-												<th>3</th>
-												<th><a href="#" class="btn btn-primary"> Alterar</a> <a href="#"
-														class="btn btn-danger"> Excluir</a></th>
-											</tr>
-											<tr>
-												<th>Rimel</th>
-												<th>27.00</th>
-												<th>2</th>
-												<th><a href="#" class="btn btn-primary"> Alterar</a> <a href="#"
-														class="btn btn-danger"> Excluir</a></th>
-											</tr>
-											<th><a href="#" class="btn btn-warning"> Finalizar
-													Venda</a></th>
-											</tr>
+										<tbody id="tabela-itens-vendas">
+											
 										</tbody>
 									</table>
+									<div class="alert alert-primary" role="alert">
+										<button type="button" class="btn btn-default btn-cancel"
+										id="btnFinalizarVenda">Finalizar Venda</button>
+									</div>
+			
 								</div>
 							</div>
 						</div>
-
 					</div>
+				
 					<div class="col-md-4">
 
 						<div class="box box-success" id="box-pre-carrinho">
@@ -178,26 +167,66 @@
 							<form role="form" id="form-pre-carrinho">
 								<div class="box-body">
 									<div class="form-group">
+										<input type="hidden" class="form-control" id="identCad" name="identCad">
+									</div>
+									<div class="form-group">
 										<label for="reCarDescricao">Descrição</label> <input type="text"
 											class="form-control" id="preCarDescricao" placeholder="Descrição do Produto"
-											name="preCarDescricao" disabled>
+											name="preCarDescricao" required disabled>
 									</div>
 									<div class="form-group">
 										<label for="preCarPreco-venda">Preco</label> <input type="number"
 											class="form-control" id="preCarPreco-venda" placeholder="Preço de venda"
-											name="preCarPreco-venda" disabled>
+											name="preCarPreco-venda" required disabled>
 									</div>
 									<div class="form-group">
 										<label for="preCarQuantidade">Quantidade</label> <input type="number"
 											class="form-control" id="preCarQuantidade" placeholder="Quantidade"
-											name="preCarQuantidade">
+											name="preCarQuantidade" required>
 									</div>
 								</div>
 								<div class="box-footer">
-									<button type="submit" class="btn btn-success">Adicionar
+									<button type="submit" class="btn btn-success" id="addCarrinho" name="addCarrinho">Adicionar
 										ao Carrinho</button>
 								</div>
 							</form>
+						</div>
+					</div>
+				</div>
+				
+				<!-- Modal -->
+				<div class="modal" tabindex="-1" role="dialog" id="ModalFinalizaVenda" style="display: none;">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h3 class="modal-title">Finalizar Venda</h3>
+							</div>
+							<div class="modal-body">
+								<label for="valorTotalVenda">Valor da Compra</label> <input type="text"
+								class="form-control" id="valorTotalVenda" name="valorTotalVenda" disabled> <br>
+															
+								<label for="formaPagamento">Forma de pagamento</label>
+                  				<select class="form-control" id="formaPagamento" name="formaPagamento">
+                  					<option value="" selected="selected">Formas de pagamento</option>
+                    				<option value="dinheiro">Dinheiro</option>
+                    				<option value="cartaoDebito">Cartão de Debito</option>
+                    				<option value="cartaoCredito">Cartão de Credito</option>
+								</select> <br>
+								
+								<label for="valorRecebido">Valor Recebido</label> <input type="text"
+								class="form-control" id="valorRecebido" name="valorRecebido" placeholder="Valor Recebido"> <br>
+								
+								<label for="valorTroco">Troco</label> <input type="text"
+								class="form-control" id="valorTroco" name="valorTroco" placeholder="Valor a devolver" disabled> <br>
+								
+								<button type="button" class="btn btn-primary" id="btnCalcularTroco">Calcular Troco</button>
+								
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-success " id="btnModalConcluir">Concluir</button>
+								<button type="button" class="btn btn-secondary" data-dismiss="modal"
+								id="btnModalCancelar">Cancelar</button>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -213,58 +242,18 @@
 									<table class="table table-striped">
 										<thead>
 											<tr>
+												<th>Codigo</th>
 												<th>Descrição</th>
 												<th>Custo</th>
 												<th>Venda</th>
 												<th>Categoria</th>
 												<th>Fornecedor</th>
 												<th>Estoque</th>
-												<th>Ações</th>
+												<th>Ação</th>
 											</tr>
 										</thead>
 										<tbody id="tabela-produtos-carrinho">
-											<tr>
-												<th>Base para o rosto</th>
-												<th>9.30</th>
-												<th>10.90</th>
-												<th>Maquiagem</th>
-												<th>João Bertano</th>
-												<th>100</th>
-												<th><a href="#" class="btn btn-primary"> Adicionar
-														ao Pré-Carrinho</a></th>
-											</tr>
-											<tr>
-												<th>Pó</th>
-												<th>12.30</th>
-												<th>16.90</th>
-												<th>Maquiagem</th>
-												<th>Pedro Ciclano</th>
-												<th>230</th>
-												<th><a href="#" class="btn btn-primary"> Adicionar
-														ao Pré-Carrinho</a></th>
-											</tr>
-											</tr>
-											<tr>
-												<th>Pincel</th>
-												<th>1.50</th>
-												<th>3.20</th>
-												<th>Maquiagem</th>
-												<th>Bruna Ciclana</th>
-												<th>23</th>
-												<th><a href="#" class="btn btn-primary"> Adicionar
-														ao Pré-Carrinho</a></th>
-											</tr>
-											</tr>
-											<tr>
-												<th>Rimel</th>
-												<th>23.90</th>
-												<th>27.00</th>
-												<th>Maquiagem</th>
-												<th>João Fulano</th>
-												<th>50</th>
-												<th><a href="#" class="btn btn-primary"> Adicionar
-														ao Pré-Carrinho</a></th>
-											</tr>
+											
 										</tbody>
 									</table>
 								</div>
@@ -515,6 +504,7 @@
 	<script src="js/util.js"></script>
 	<script src="js/CadastroProduto.js"></script>
 	<script src="js/CadastroUsuario.js"></script>
+	<script src="js/Vendas.js"></script>
 	<script src="index.js"></script>
 
 

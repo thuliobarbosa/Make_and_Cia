@@ -1,5 +1,6 @@
 let cadastroProduto = new CadastroProduto("form-cadastro-produto","tabela-produtos");
 let cadastroUsuario = new CadastroUsuario("form-cadastro-usuario","tabela-usuarios");
+let vendas = new Vendas("tabela-produtos-carrinho", "form-pre-carrinho");
 
 document.querySelector("#btnCadastroProduto").addEventListener('click', () => {
     mostraPainelProduto();
@@ -23,6 +24,7 @@ function mostraPainelVendas() {
     document.querySelector("#show_cadastro-produto").style.display = "none";
     document.querySelector("#show_cadastro-usuario").style.display = "none";
     document.querySelector("#show_vendas").style.display = "block";
+	vendas.listaProdutos();
 }
 
 function mostraPainelUsuario() {

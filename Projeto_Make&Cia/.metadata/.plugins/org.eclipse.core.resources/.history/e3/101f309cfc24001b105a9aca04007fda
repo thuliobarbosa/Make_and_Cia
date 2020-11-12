@@ -1,0 +1,165 @@
+class Vendas {
+	
+	constructor(tabelaProdutos, formulario) {
+		this.tabelaProdutos = document.getElementById(tabelaProdutos);
+		this.formulario = document.getElementById(formulario);
+		
+		this.itensCarrinho();
+		this.listaProdutos();
+	}
+	
+	
+	listaProdutos() {
+		
+		this.tabelaProdutos.innerHTML = "<h4>Sincronizando os dados...</h4>";
+			
+		requestAjax("ListarProduto", this.formulario).then(
+			
+			(retorno) => {
+				
+				this.tabelaProdutos.innerHTML = "";
+				
+				retorno.forEach((campo) => {
+				
+					let tr = document.createElement('tr');
+				
+					tr.innerHTML += `
+						<td>${campo.codigo}</td>
+						<td>${campo.descricao}</td>
+						<td>${"R$ " + campo.preco_custo}</td>
+						<td>${"R$ " + campo.preco_venda}</td>
+			            <td>${campo.categoria}</td>
+			            <td>${campo.cod_fornecedor}</td>
+						<td>${campo.quantidade}</td>
+						<td>
+			            <button type="button" class="btn btn-primary btn-edit btn-xs btn-flat" onclick="adicionaAoPreCarrinho(${campo.id})">Adicionar ao pré carrinho</button>
+			            </td> 
+		        	`;
+
+					tr.id = campo.id;
+		
+					this.tabelaProdutos.appendChild(tr);
+				
+				});
+	
+		   	}, 
+		
+			(error) => {
+				console.log(error)
+			}
+			
+		);
+	
+	};
+	
+	itensCarrinho() {
+		
+		let valorTotalCompra = 0;
+		
+		this.formulario.querySelector("#addCarrinho").addEventListener('click', (event) => {
+			
+			event.preventDefault();
+		
+			let valorItemAtual = 0;
+			
+			let id = this.formulario.querySelector("#identCad");
+			let desc = this.formulario.querySelector("#preCarDescricao");
+			let preco = this.formulario.querySelector("#preCarPreco-venda");
+			let quantidade = this.formulario.querySelector("#preCarQuantidade");
+			
+			if (id.value == "" || desc.value == "" || preco.value == "" || quantidade.value == "") {
+				console.log("Contem campos em branco");
+			}
+			else {
+			
+				let tabelaCarrinho = document.querySelector("#tabela-itens-vendas");
+				let tr = document.createElement('tr');
+						
+				tr.innerHTML += `
+					<td>${desc.value}</td>
+					<td>${"R$ " + preco.value}</td>
+					<td>${quantidade.value}</td>
+					<td>
+			            <button type="button" class="btn btn-danger btn-xs btn-flat" onclick="excluiItemCarrinho(${id.value})">Remover</button>
+			        </td> 
+		    	`;
+		
+				tr.id = id.value;
+		
+				tabelaCarrinho.appendChild(tr);
+				
+				valorItemAtual = (preco.value * quantidade.value);
+				
+				this.formulario.reset();
+				
+				valorTotalCompra += valorItemAtual;
+				
+				document.querySelector("#btnFinalizarVenda").addEventListener('click', () => {
+					
+					let modal = document.querySelector("#ModalFinalizaVenda");
+					modal.style.display = "block";	
+					
+					document.querySelector("#valorTotalVenda").value = valorTotalCompra;
+					
+					let valorCompra = document.querySelector("#valorTotalVenda").value;
+					let valorRecebido = document.querySelector("#valorRecebido").value;
+					let troco = document.querySelector("#valorTroco");
+					
+					document.querySelector("#btnCalcularTroco").addEventListener('click', () => {
+						
+						if (valorCompra.value > valorRecebido.value){
+							alert("Valor recebido esta abaixo, não é possivel finalizar a venda!");
+						}
+						else {
+							troco.value = (valorRecebido.value - valorCompra.value);
+						}
+					});
+					
+					document.querySelector("#btnModalCancelar").addEventListener('click', () => {
+						modal.style.display = "none";
+					});
+					
+				});
+				
+			};
+			
+		}); 
+		
+	}
+	
+}
+
+function adicionaAoPreCarrinho(idProduto) {
+		
+	let form = document.querySelector("#form-pre-carrinho");
+	let id = form.querySelector("#identCad");
+	id.value = idProduto;
+	
+	requestAjax("ConsultarProduto", form).then(
+			
+		(retorno) => {
+			
+			form.querySelector("#preCarDescricao").value = retorno.descricao;
+			form.querySelector("#preCarPreco-venda").value = retorno.preco_venda;
+				
+	   	}, 
+	
+		(error) => {
+			console.log(error);
+		}
+			
+	);
+
+}
+
+function excluiItemCarrinho(id) {
+	
+	let tabela = document.querySelector("#tabela-itens-vendas");
+	
+	[...tabela.children].forEach( (tr) => {
+		if (tr.id == id){
+			tr.remove();
+		}
+	});
+		
+}
