@@ -96,6 +96,15 @@ class CadastroProduto {
 					this.tabelaProdutos.appendChild(tr);
 				
 				});
+				
+				$('#table-produtos').DataTable( {
+				    paging: false,
+				    ordering: true,
+				    language: {
+				     search: "pesquisar",
+				     info: "_TOTAL_ registros"
+				    }
+				} );
 	
 		   	}, 
 		
