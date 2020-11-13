@@ -44,7 +44,7 @@ create table cad_usuario(
     senha varchar(32) not null,
     administrador tinyint(1),
     PRIMARY KEY(id)
-);
+)ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 
 create table vendasProduto(
@@ -54,7 +54,7 @@ create table vendasProduto(
     preço double not null,
     PRIMARY KEY(id_VendasProdutos),
     FOREIGN KEY (pedido) REFERENCES vendas (id_vendas)
-);
+)ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 
 create table vendas(
@@ -62,7 +62,7 @@ create table vendas(
     data date,
     tipo varchar(20),
     PRIMARY KEY(id_vendas)
-);
+)ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 
 --
