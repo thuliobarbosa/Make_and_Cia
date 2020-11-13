@@ -39,7 +39,8 @@ class CadastroProduto {
 					this.atualizaContador();
 					this.listaProdutos();
 					this.mostraFormularioCad();
-					
+					let modal = document.querySelector("#ModalFormProduto");
+					modal.style.display = "none";
 	        	},
 	
 				(error) => {
@@ -48,9 +49,15 @@ class CadastroProduto {
 			);
 		});
 		
-		/*this.formularioCad.querySelector("#btnCancelarProduto").addEventListener('click', () => {
-			///xxxxxxx
-		});*/
+		this.formularioCad.querySelector("#btnCancelarProduto").addEventListener('click', () => {
+			let modal = document.querySelector("#ModalFormProduto");
+			modal.style.display = "none";
+		});
+		
+		
+		document.querySelector("#btnNovoProduto").addEventListener('click', () => {
+			this.mostraFormularioCad();
+		});
 	
 	}
 
@@ -122,14 +129,20 @@ class CadastroProduto {
     };
 
 	mostraFormularioCad() {
+		this.formularioCad.reset();
         document.querySelector("#box-cadastro-produto-titulo").innerHTML = "Cadastrar Produto";
 
 		let id = this.formularioCad.querySelector("#identCad");
 		id.value = 0;
+
+		let modal = document.querySelector("#ModalFormProduto");
+		modal.style.display = "block";
     }
 
     mostraFormularioEdit() {
         document.querySelector("#box-cadastro-produto-titulo").innerHTML = "Alterar Produto";
+        let modal = document.querySelector("#ModalFormProduto");
+		modal.style.display = "block";
     }	
 
 }

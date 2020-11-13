@@ -11,6 +11,12 @@
 	<link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
 	<link rel="stylesheet" href="dist/css/AdminLTE.min.css">
 	<link rel="stylesheet" href="dist/css/skins/skin-blue.min.css">
+	<style>
+		.modal-content {
+		  height:calc(100vh - 100px);
+		  overflow:auto;
+		}
+	</style>
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">
@@ -314,6 +320,8 @@
 									<div class="inner">
 										<h3 id="quantidade-produtos">0</h3>
 										<p>Produtos Cadastrados</p>
+										<button type="button" class="btn btn-default"
+													id="btnNovoProduto">Novo</button>
 									</div>
 								</div>
 							</div>
@@ -321,59 +329,65 @@
 						</div>
 
 						<!-- Formulário de cadastro de produto -->
-						<div class="box box-success" id="box-cadastro-produto">
-
-							<div class="box-header with-border">
-								<h3 class="box-title" id="box-cadastro-produto-titulo">Novo Produto</h3>
+						<div class="modal" tabindex="-1" role="dialog" id="ModalFormProduto" style="display: none;">
+							<div class="modal-dialog" role="document">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h3 class="box-title" id="box-cadastro-produto-titulo">Novo Produto</h3>
+									</div>
+									<div class="modal-body">
+	
+						
+										<form role="form" id="form-cadastro-produto">
+											<div class="box-body">
+												<div class="form-group">
+													<input type="hidden" class="form-control" id="identCad" name="identCad">
+												</div>
+												<div class="form-group">
+													<label for="codigo">Codigo</label> <input type="text" class="form-control"
+														id="codigo" placeholder="Descrição do Produto" name="codigo" required>
+												</div>
+												<div class="form-group">
+													<label for="descricao">Descrição</label> <input type="text" class="form-control"
+														id="descricao" placeholder="Descrição do Produto" name="descricao" required>
+												</div>
+												<div class="form-group">
+													<label for="preco-custo">Preco de custo</label> <input type="number"
+														class="form-control" id="preco-custo" placeholder="Preço de custo"
+														name="preco-custo" required step=".01">
+												</div>
+												<div class="form-group">
+													<label for="preco-venda">Preco de venda</label> <input type="number"
+														class="form-control" id="preco-venda" placeholder="Preço de venda"
+														name="preco-venda" required step=".01">
+												</div>
+												<div class="form-group">
+													<label for="categoria">Categoria</label> <input type="number"
+														class="form-control" id="categoria" placeholder="Categoria do produto"
+														name="categoria" required>
+												</div>
+												<div class="form-group">
+													<label for="fornecedor">Fornecedor</label> <input type="number"
+														class="form-control" id="fornecedor" placeholder="Fornecedor do produto"
+														name="fornecedor" required>
+												</div>
+												<div class="form-group">
+													<label for="qtd-estoque">Estoque</label> <input type="number"
+														class="form-control" id="qtd-estoque" placeholder="Quantidade de estoque"
+														name="qtd-estoque" required>
+												</div>
+											</div>
+			
+											<div class="box-footer">
+												<button type="submit" class="btn btn-success"
+													id="btnCadastraProduto">Salvar</button>
+												<button type="button" class="btn btn-default btn-cancel"
+													id="btnCancelarProduto">Cancelar</button>
+											</div>
+										</form>
+									</div>
+								</div>
 							</div>
-
-							<form role="form" id="form-cadastro-produto">
-								<div class="box-body">
-									<div class="form-group">
-										<input type="hidden" class="form-control" id="identCad" name="identCad">
-									</div>
-									<div class="form-group">
-										<label for="codigo">Codigo</label> <input type="text" class="form-control"
-											id="codigo" placeholder="Descrição do Produto" name="codigo" required>
-									</div>
-									<div class="form-group">
-										<label for="descricao">Descrição</label> <input type="text" class="form-control"
-											id="descricao" placeholder="Descrição do Produto" name="descricao" required>
-									</div>
-									<div class="form-group">
-										<label for="preco-custo">Preco de custo</label> <input type="number"
-											class="form-control" id="preco-custo" placeholder="Preço de custo"
-											name="preco-custo" required>
-									</div>
-									<div class="form-group">
-										<label for="preco-venda">Preco de venda</label> <input type="number"
-											class="form-control" id="preco-venda" placeholder="Preço de venda"
-											name="preco-venda" required>
-									</div>
-									<div class="form-group">
-										<label for="categoria">Categoria</label> <input type="number"
-											class="form-control" id="categoria" placeholder="Categoria do produto"
-											name="categoria" required>
-									</div>
-									<div class="form-group">
-										<label for="fornecedor">Fornecedor</label> <input type="number"
-											class="form-control" id="fornecedor" placeholder="Fornecedor do produto"
-											name="fornecedor" required>
-									</div>
-									<div class="form-group">
-										<label for="qtd-estoque">Estoque</label> <input type="number"
-											class="form-control" id="qtd-estoque" placeholder="Quantidade de estoque"
-											name="qtd-estoque" required>
-									</div>
-								</div>
-
-								<div class="box-footer">
-									<button type="submit" class="btn btn-success"
-										id="btnCadastraProduto">Salvar</button>
-									<button type="button" class="btn btn-default btn-cancel"
-										id="btnCancelarProduto">Cancelar</button>
-								</div>
-							</form>
 						</div>
 
 					</div>
