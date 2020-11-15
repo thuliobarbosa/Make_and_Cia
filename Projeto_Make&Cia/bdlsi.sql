@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 5.7.12, for Win64 (x86_64)
 
--- Table structure for table `cad_produto`
+-- Tabela Cadastro de produto
 
 DROP TABLE IF EXISTS `cad_produto`;
 CREATE TABLE `cad_produto` (
@@ -14,8 +14,9 @@ CREATE TABLE `cad_produto` (
   `quantidade` int(11) DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `codigo_UNIQUE` (`codigo`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+)ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
+-- Tabela Cadastro de usuario
 
 create table cad_usuario(
     id int not null auto_increment,
@@ -26,6 +27,7 @@ create table cad_usuario(
     PRIMARY KEY(id)
 )ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
+-- Tabela Cadastro de vendas
 
 create table vendasProduto(
     id_VendasProdutos int not null auto_increment,
