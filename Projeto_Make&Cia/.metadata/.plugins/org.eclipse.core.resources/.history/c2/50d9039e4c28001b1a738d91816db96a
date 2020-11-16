@@ -1,0 +1,13 @@
+package br.com.libertas.dto;
+
+import java.sql.Date;
+
+public class ContaPagar {
+	
+	private int id;
+	private String descricao;
+	private Double valor;
+	private Date data;
+	
+
+}

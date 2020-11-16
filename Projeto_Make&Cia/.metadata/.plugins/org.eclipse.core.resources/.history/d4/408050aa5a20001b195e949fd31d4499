@@ -1,5 +1,0 @@
-package br.com.libertas.model.usuario;
-
-public interface Modelo {
-
-}

@@ -10,8 +10,8 @@ public class Conexao {
 	public Conexao() {
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
-			String url = "jdbc:mariadb://34.123.152.95:3306/bdlsi";
-			conexao = DriverManager.getConnection(url, "root", "libertas");
+			String url = "jdbc:mariadb://localhost:3306/bdlsi";
+			conexao = DriverManager.getConnection(url, "root", "123456");
 		} 
 		
 		catch (Exception e) {
