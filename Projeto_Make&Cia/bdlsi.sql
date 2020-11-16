@@ -74,3 +74,29 @@ CREATE TABLE cad_categoria(
 	PRIMARY KEY(id)
 )ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=UTF8;
 
+-- Tabela Cadastro de contas a pagar
+
+CREATE TABLE cad_contasPagar(
+	id INT NOT NULL AUTO_INCREMENT,
+	descricao VARCHAR(60) NOT NULL,
+	valor DOUBLE NOT NULL,
+	data DATE NOT NULL,
+	status CHAR(1) NOT NULL,
+	parcela int NOT NULL,
+	observacoes VARCHAR(200),
+	PRIMARY KEY (id)
+)ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- Tabela Cadastro de contas a receber
+
+CREATE TABLE cad_contasReceber(
+	id INT NOT NULL AUTO_INCREMENT,
+	descricao VARCHAR(60) NOT NULL,
+	valor DOUBLE NOT NULL,
+	data DATE NOT NULL,
+	status CHAR(1) NOT NULL,
+	parcela int NOT NULL,
+	observacoes VARCHAR(200),
+	PRIMARY KEY (id)
+)ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
