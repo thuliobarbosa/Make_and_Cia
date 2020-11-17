@@ -5,6 +5,7 @@ public class VendasProduto {
 	private int pedido;
 	private int produto;
 	private double preço;
+	
 	public int getId_VendaProdutos() {
 		return id_VendaProdutos;
 	}
