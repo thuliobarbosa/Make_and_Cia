@@ -865,7 +865,7 @@
 													<option value="F">Fechada</option>
 												</select> <br>
 												
-												<label for="parcelaContasPagar">Parcela(s)</label> 
+												<label for="parcelaContasPagar">Parcela</label> 
 												<select
 													class="form-control" id="parcelaContasPagar" name="parcelaContasPagar">
 													<option value="1">1x</option>

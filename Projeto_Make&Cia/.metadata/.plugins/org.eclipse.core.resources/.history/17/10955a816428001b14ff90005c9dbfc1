@@ -857,36 +857,26 @@
 													<label for="dataContasPagar">Data</label> <input type="date"
 														class="form-control" id="dataContasPagar"
 														placeholder="Data da conta" name="dataContasPagar" required>
-												</div>									
-												<label for="statusContasPagar">Status</label> 
-												<select
-													class="form-control" id="statusContasPagar" name="statusContasPagar">
-													<option value="A">Aberta</option>
-													<option value="F">Fechada</option>
-												</select> <br>
+												</div>
+												<div class="form-group">
+													<label for="statusContasPagar">Status</label> <input type="text"
+														class="form-control" id="statusContasPagar"
+														placeholder="Status da conta" name="statusContasPagar" required>
+												</div>
 												
-												<label for="parcelaContasPagar">Parcela(s)</label> 
-												<select
-													class="form-control" id="parcelaContasPagar" name="parcelaContasPagar">
-													<option value="1">1x</option>
-													<option value="2">2x</option>
-													<option value="3">3x</option>
-													<option value="4">4x</option>
-													<option value="5">5x</option>
-													<option value="6">6x</option>
-													<option value="7">7x</option>
-													<option value="8">8x</option>
-													<option value="9">9x</option>
-													<option value="10">10x</option>
-													<option value="11">11x</option>
-													<option value="12">12x</option>
-												</select> <br>
+												<label for="formaPagamento">Forma de pagamento</label> <select
+												class="form-control" id="formaPagamento" name="formaPagamento">
+												<option value="" selected="selected">Opções Status</option>
+												<option value="dinheiro">Dinheiro</option>
+												<option value="cartaoDebito">Cartão de Debito</option>
+												<option value="cartaoCredito">Cartão de Credito</option>
+											</select>
 												
-												<!-- <div class="form-group">
+												<div class="form-group">
 													<label for="parcelaContasPagar">Parcela</label> <input type="text"
 														class="form-control" id="parcelaContasPagar"
 														placeholder="Parcela da conta" name="parcelaContasPagar" required>
-												</div> -->
+												</div>
 											</div>
 
 											<div class="box-footer">

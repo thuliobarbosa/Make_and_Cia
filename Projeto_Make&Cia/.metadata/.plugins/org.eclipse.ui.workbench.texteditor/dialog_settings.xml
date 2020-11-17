@@ -8,6 +8,7 @@
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="btnCadastraContasPagar"/>
 			<item value="btnModalCancelar"/>
 			<item value="novo"/>
 			<item value="tabela"/>
@@ -15,7 +16,6 @@
 			<item value="alterar"/>
 			<item value="lista"/>
 			<item value="listaProdutos()"/>
-			<item value="mostraFormularioEdit"/>
 		</list>
 		<list key="replacehistory">
 			<item value="mostraFormularioEditUser"/>

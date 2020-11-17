@@ -79,7 +79,7 @@ class ContasPagar {
 						<td>${campo.descricao}</td>
 						<td>${campo.valor}</td>
 						<td>${campo.data}</td>
-						<td>${campo.status}</td>
+						<td>${campo.status == 'A' ? 'Aberta' : 'Fechada'}</td>
 						<td>${campo.parcela}</td>
 			            <td>
 			            <button type="button" class="btn btn-primary btn-edit btn-xs btn-flat" onclick="editaCadastroContasPagar(${campo.id})">Editar</button>
