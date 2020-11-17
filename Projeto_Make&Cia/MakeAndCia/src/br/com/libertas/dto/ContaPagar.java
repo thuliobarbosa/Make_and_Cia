@@ -1,5 +1,6 @@
 package br.com.libertas.dto;
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 
 public class ContaPagar {
 	
@@ -9,6 +10,7 @@ public class ContaPagar {
 	private Date data;
 	private String status;
 	private int parcela;
+	private String dataFormatada;
 	
 	public int getId() {
 		return id;
@@ -31,8 +33,13 @@ public class ContaPagar {
 	public Date getData() {
 		return data;
 	}
+	public String getDataFormatada() {
+		return dataFormatada;
+	}
 	public void setData(Date data) {
 		this.data = data;
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		this.dataFormatada = sdf.format(data);
 	}
 	public String getStatus() {
 		return status;

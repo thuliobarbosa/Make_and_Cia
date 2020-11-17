@@ -78,7 +78,7 @@ class ContasPagar {
 					tr.innerHTML += `
 						<td>${campo.descricao}</td>
 						<td>${campo.valor}</td>
-						<td>${campo.data}</td>
+						<td>${campo.dataFormatada}</td>
 						<td>${campo.status == 'A' ? 'Aberta' : 'Fechada'}</td>
 						<td>${campo.parcela}</td>
 			            <td>
@@ -149,12 +149,12 @@ function editaCadastroContasPagar(idConta) {
 			
 		(retorno) => {
 		
-			formCadastro.querySelector("#descricaoContasPagar").value = retorno.descricao
-			formCadastro.querySelector("#valorContasPagar").value = retorno.valor
-			formCadastro.querySelector("#dataContasPagar").value = retorno.data
+			formCadastro.querySelector("#descricaoContasPagar").value = retorno.descricao;
+			formCadastro.querySelector("#valorContasPagar").value = retorno.valor;
+			formCadastro.querySelector("#dataContasPagar").value = formatarData(retorno.dataFormatada);
 			//formCadastro.querySelector("#statusContasPagar").value = retorno.status
 			$("#statusContasPagar").val(retorno.status);
-			formCadastro.querySelector("#parcelaContasPagar").value = retorno.parcela
+			formCadastro.querySelector("#parcelaContasPagar").value = retorno.parcela;
 				
 	   	}, 
 	
@@ -164,6 +164,11 @@ function editaCadastroContasPagar(idConta) {
 			
 	);
 
+}
+
+function formatarData(dataptbr) {
+	var vetor = dataptbr.split("/");
+	return vetor[2] + '-' + vetor[1] + '-' + vetor[0]; 
 }
 
 function excluiCadastroContasPagar(idConta) {
