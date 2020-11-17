@@ -152,7 +152,8 @@ function editaCadastroContasPagar(idConta) {
 			formCadastro.querySelector("#descricaoContasPagar").value = retorno.descricao
 			formCadastro.querySelector("#valorContasPagar").value = retorno.valor
 			formCadastro.querySelector("#dataContasPagar").value = retorno.data
-			formCadastro.querySelector("#statusContasPagar").value = retorno.status
+			//formCadastro.querySelector("#statusContasPagar").value = retorno.status
+			$("#statusContasPagar").val(retorno.status);
 			formCadastro.querySelector("#parcelaContasPagar").value = retorno.parcela
 				
 	   	}, 

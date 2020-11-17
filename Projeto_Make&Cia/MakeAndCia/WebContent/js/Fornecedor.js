@@ -18,9 +18,15 @@ class Fornecedor {
 		});
 		
 		btnCadFornecedor.addEventListener('click', () => {
+	
+			//valida se todos os campos foram preenchidos
+			if ( ! this.formulario.checkValidity() ) {
+				return;
+			}
 			
 			var servico = "";
 			let id = this.formulario.querySelector("#identCad");
+	
 			
 			if (id.value==0) {
 				servico = "InserirFornecedor";

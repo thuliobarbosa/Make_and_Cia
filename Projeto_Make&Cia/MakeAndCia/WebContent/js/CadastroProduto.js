@@ -35,7 +35,7 @@ class CadastroProduto {
 					
 		        	$.notify({ message: retorno  },{ type: 'info', placement: { from: 'top', align: 'center' } });
 					this.listaProdutos();
-					this.mostraFormularioCad();
+					//this.mostraFormularioCad();
 					let modal = document.querySelector("#ModalFormProduto");
 					modal.style.display = "none";
 	        	},
@@ -67,7 +67,11 @@ class CadastroProduto {
 			
 			(retorno) => {
 				
-				this.tabelaProdutos.innerHTML = "";
+				//this.tabelaProdutos.innerHTML = "";
+				var table = $('#table-produtos').DataTable();
+				table.clear().draw();
+				table.destroy();
+				
 				
 				retorno.forEach((campo) => {
 				
@@ -94,14 +98,18 @@ class CadastroProduto {
 				
 				});
 				
-				$('#table-produtos').DataTable( {
+				var table = $('#table-produtos').DataTable( {
 				    paging: false,
 				    ordering: true,
+				    destroy: true,
+				    retrieve: true,
 				    language: {
 				     search: "Buscar ",
 				     info: ""
 				    }
 				} );
+			
+				
 	
 		   	}, 
 		
